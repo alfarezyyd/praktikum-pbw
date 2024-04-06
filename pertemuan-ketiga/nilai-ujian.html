@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Konversi Nilai Ujian</title>
+</head>
+<body>
+<h1>Form Nilai</h1>
+<form action="nilai-ujian.html" method="get" name="formNilai">
+    <label for="number">Masukkan Nilai Ujian: </label>
+    <input type="number" name="number" id="number">
+    <button type="submit" onclick="" id="submitButton">Submit</button>
+</form>
+<h1>Nilai Angka yang Dihasilkan</h1>
+<div class="outputDiv">
+</div>
+<ul>
+</ul>
+</body>
+<script !src="">
+    document.querySelector("form[name=formNilai]").addEventListener("submit", (e) => {
+        const divElement = document.querySelector(".outputDiv");
+        if (divElement.firstElementChild != null) {
+            divElement.removeChild(divElement.firstElementChild);
+        }
+        const htmlParagraphElement = document.createElement("p");
+        htmlParagraphElement.innerHTML = "Nilai Huruf: ";
+        const inputValue = document.forms['formNilai']['number'].value;
+        const inputValueInt = parseInt(inputValue);
+        if (inputValueInt > 90 && inputValueInt <= 100) {
+            htmlParagraphElement.innerHTML = htmlParagraphElement.innerHTML + "A"
+        } else if (inputValueInt > 80 && inputValueInt <= 90) {
+            htmlParagraphElement.innerHTML = htmlParagraphElement.innerHTML + "B"
+        } else if (inputValueInt > 70 && inputValueInt <= 80) {
+            htmlParagraphElement.innerHTML = htmlParagraphElement.innerHTML + "C"
+        } else if (inputValueInt > 60 && inputValueInt <= 70) {
+            htmlParagraphElement.innerHTML = htmlParagraphElement.innerHTML + "D"
+        } else if (inputValueInt > 50 && inputValueInt <= 60) {
+            htmlParagraphElement.innerHTML = htmlParagraphElement.innerHTML + "E"
+        } else if (inputValueInt >= 0 && inputValueInt <= 50) {
+            htmlParagraphElement.innerHTML = "Mengulang"
+        } else {
+            htmlParagraphElement.innerHTML = "Input Tidak Valid, Silahkan Ulangi"
+        }
+        divElement.appendChild(htmlParagraphElement)
+        e.preventDefault();
+    })
+</script>
+</html>

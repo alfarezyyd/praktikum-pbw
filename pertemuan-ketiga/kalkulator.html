@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Kalkulator</title>
+    <style>
+        * {
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+<h1>Kalkulator</h1>
+<button id="addInputNumber">Tambah Angka</button>
+<form action="kalkulator.html" method="get" name="formCalculator">
+    <div class="divInput">
+        <label>Angka: </label>
+        <br>
+        <input type="number" id="allNum">
+    </div>
+    <label>Operator</label>
+    <input type="radio" name="operator" value="add" checked> Tambah
+    <input type="radio" name="operator" value="sub"> Kurang
+    <input type="radio" name="operator" value="div"> Pembagian
+    <input type="radio" name="operator" value="mul"> Perkalian
+    <input type="radio" name="operator" value="mod"> Modulo
+    <br>
+    <button type="submit">Submit</button>
+    <div class="divOutput">
+
+    </div>
+</form>
+</body>
+<script !src="">
+    function mappingOperator(initialValue, operator, ...elements) {
+        switch (operator) {
+            case "add":
+                for (const element of elements) {
+                    initialValue += element;
+                }
+                break;
+            case "sub":
+                for (const element of elements) {
+                    initialValue -= element;
+                }
+                break;
+            case "div":
+                for (const element of elements) {
+                    initialValue /= element;
+                }
+                break;
+            case "mul":
+                for (const element of elements) {
+                    initialValue *= element;
+                }
+                break;
+            case "mod":
+                for (const element of elements) {
+                    initialValue %= element;
+                }
+                break;
+        }
+        return initialValue;
+    }
+
+    document.querySelector("form[name=formCalculator]").addEventListener("submit", function (e) {
+        let htmlHeadingElement = document.createElement("h3");
+        htmlHeadingElement.innerText = "";
+        e.preventDefault()
+        let elementNodeListOf = document.querySelectorAll("#allNum");
+        let allValues = [];
+        let operator = document.querySelector("input[type='radio'][name='operator']:checked").value;
+        for (let i = 1; i < elementNodeListOf.length; i++) {
+            allValues.push(parseInt(elementNodeListOf.item(i).value));
+        }
+        let result = mappingOperator(parseInt(elementNodeListOf.item(0).value), operator, ...allValues);
+        htmlHeadingElement.innerText = result.toString();
+        const divOutput = document.querySelector(".divOutput");
+        if (divOutput.firstElementChild != null) {
+            divOutput.removeChild(divOutput.firstElementChild)
+        }
+        divOutput.appendChild(htmlHeadingElement);
+    })
+
+    document.getElementById("addInputNumber").addEventListener("click", function (e) {
+        let htmlDivElement = document.querySelector(".divInput");
+        let htmlInputElement = document.createElement("input");
+        htmlInputElement.setAttribute("type", "number")
+        htmlInputElement.setAttribute("id", "allNum")
+        htmlDivElement.appendChild(htmlInputElement);
+        e.preventDefault();
+    })
+</script>
+</html>

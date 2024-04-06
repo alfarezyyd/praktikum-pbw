@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Form</title>
+    <link rel="stylesheet" href="form.css">
+</head>
+<body>
+<div class="divParent">
+    <h1>Pendaftaran Mahasiswa Baru</h1>
+    <form action="" method="get">
+        <label for="npm">NPM (Nomor Pokok Mahasiswa)</label>
+        <br>
+        <input type="text" name="" id="npm">
+        <br>
+        <label for="nama_lengkap">Nama Lengkap</label>
+        <br>
+        <input type="text" name="" id="nama_lengkap">
+        <br>
+        <label for="alamat">Alamat</label>
+        <br>
+        <textarea name="" id="alamat" cols="30" rows="10"></textarea>
+        <br>
+        <label>Jenis Kelamin</label>
+        <br>
+        <input type="radio" name="gender" value="Laki-Laki" id="laki-laki"><label for="laki-laki">Laki-Laki</label>
+        <br>
+        <input type="radio" name="gender" value="Perempuan" id="perempuan"><label for="perempuan">Perempuan</label>
+        <br>
+        <label for="jurusan">Program Studi</label>
+        <br>
+        <select name="jurusan" id="jurusan">
+            <option value="Informatika">Informatika</option>
+            <option value="Sistem Informasi">Sistem Informasi</option>
+            <option value="Pendidikan Masyarakat">Pendidikan Masyarakat</option>
+            <option value="Pendidikan Matematika">Pendidikan Matematika</option>
+            <option value="Teknik Elektro">Teknik Elektro</option>
+            <option value="Teknik Kimia">Teknik Kimia</option>
+        </select>
+        <button type="submit">Tambah</button>
+    </form>
+</div>
+</body>
+</html>

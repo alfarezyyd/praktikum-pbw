@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fibonacci</title>
+</head>
+<body>
+<h1>Deret Fibonacci</h1>
+<form action="fibonacci.html" method="get" name="formFibonacci">
+    <label for="number">Masukkan Batas Deret Fibonacci yang Diinginkan: </label>
+    <input type="number" name="number" id="number">
+    <button type="submit" onclick="" id="submitButton">Submit</button>
+</form>
+<h1>Deret Fibonacci</h1>
+<ul>
+</ul>
+</body>
+<script !src="">
+    document.querySelector("form[name=formFibonacci]").addEventListener("submit", (e) => {
+        const unorderedList = document.querySelector("ul");
+        unorderedList.innerHTML = "";
+        const inputValue = document.forms['formFibonacci']['number'].value;
+        let initiateVal = 0;
+        let secondInitiateVal = 1;
+        for (let i = 1; i <= inputValue - 2; i++) {
+            let liElement = document.createElement("li");
+            let resultVal = initiateVal + secondInitiateVal;
+            initiateVal = secondInitiateVal;
+            secondInitiateVal = resultVal;
+            liElement.innerText = (initiateVal + secondInitiateVal).toString();
+            unorderedList.appendChild(liElement);
+        }
+        e.preventDefault();
+    });
+</script>
+</html>

@@ -1,0 +1,66 @@
+<?php
+global $koneksi;
+include 'koneksi.php';
+$query = "SELECT m.nama as nama, mk.nama as nama_mata_kuliah, jumlah_sks FROM krs JOIN mahasiswa m on m.npm = krs.mahasiswa_npm JOIN matakuliah mk on mk.kodemk = krs.matakuliah_kodemk";
+$mysqli_result = mysqli_query($koneksi, $query);
+$count_row = 1;
+?>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Tugas Pertemuan Ketujuh</title>
+    <style>
+        .tablePrimary, .tablePrimary th, .tablePrimary td {
+            width: 100%;
+            table-layout: fixed;
+            border: black 1px solid;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+<h1>Mahasiswa & KRS</h1>
+
+<h3>Link</h3>
+<ol>
+    <li><a href="crud-mahasiswa.phtml">CRUD Mahasiswa</a></li>
+    <li><a href="crud-mata-kuliah.phtml">CRUD Mata Kuliah</a></li>
+    <li><a href="crud-krs.phtml">CRUD KRS</a></li>
+</ol>
+
+<table class="tablePrimary">
+    <thead>
+    <tr>
+        <th>No</th>
+        <th>Nama Lengkap</th>
+        <th>Mata Kuliah</th>
+        <th>Keterangan</th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php while ($row = mysqli_fetch_assoc($mysqli_result)) { ?>
+        <tr>
+            <td><?= $count_row ?></td>
+            <?php foreach ($row as $key => $value) { ?>
+                <td>
+                    <?php
+                    if ($key == "jumlah_sks") {
+                        echo "{$row["nama"]} Mengambil Mata Kuliah {$row["nama_mata_kuliah"]} ({$value} SKS)";
+                    } else {
+                        echo $value;
+                    }
+                    ?>
+                </td>
+            <?php } ?>
+        </tr>
+        <?php $count_row++ ?>
+    <?php } ?>
+    </tbody>
+</table>
+</body>
+</html>

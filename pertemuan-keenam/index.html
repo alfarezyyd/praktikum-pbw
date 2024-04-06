@@ -1,0 +1,93 @@
+<?php
+$bandara_asal = array(
+    "Soekarno Hatta" => 65000,
+    "Husein Sastranegara" => 50000,
+    "Abdul Rachman Saleh" => 40000,
+    "Juanda" => 30000,
+);
+
+$bandara_tujuan = array(
+    "Ngurah Rai" => 85000,
+    "Hasanuddin" => 70000,
+    "Inanwatan" => 90000,
+    "Sultan Iskandar Muda" => 60000
+);
+
+ksort($bandara_asal);
+ksort($bandara_tujuan);
+
+if (isset($_GET['submit'])) {
+    $randomString = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 10);
+    $pajak = $bandara_asal[$_GET['bandaraAsal']] + $bandara_tujuan[$_GET['bandaraTujuan']];
+    $harga_tiket = $pajak + $_GET['hargaTiket'];
+    $invoice = array(
+        "nomor" => $randomString,
+        "tanggal" => date('d-m-y h:i:s'),
+        "nama_maskapai" => $_GET['namaMaskapai'],
+        "asal_penerbangan" => $_GET['bandaraAsal'],
+        "tujuan_penerbangan" => $_GET['bandaraTujuan'],
+        "harga_tiket" => $_GET['hargaTiket'],
+        "pajak" => $pajak,
+        "total_harga_tiket" => $harga_tiket,
+    );
+}
+?>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Aplikasi Pendafataran Rute Penerbangan</title>
+</head>
+<body>
+<h1>Pendaftaran Rute Penerbangan</h1>
+<form action="" method="get">
+    <table>
+        <tr>
+            <td><label for="namaMaskapai">Nama Maskapai: </label></td>
+            <td><input type="text" name="namaMaskapai" id="namaMaskapai" required></td>
+        </tr>
+        <tr>
+            <td><label for="bandaraAsal">Bandara Asal: </label></td>
+            <td>
+                <select name="bandaraAsal" id="bandaraAsal" required>
+                    <?php
+                    foreach ($bandara_asal as $key => $value) { ?>
+                        <option value="<?php echo $key ?>"><?php echo $key ?> </option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="bandaraTujuan">Bandara Tujuan</label></td>
+            <td>
+                <select name="bandaraTujuan" id="bandaraTujuan" required>
+                    <?php
+                    foreach ($bandara_tujuan as $key => $value) { ?>
+                        <option value="<?php echo $key ?>"><?php echo $key ?> </option>
+                    <?php } ?>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label for="hargaTiket">Harga Tiket</label>
+            </td>
+            <td>
+                <input type="number" name="hargaTiket" id="hargaTiket" required>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <button type="submit" name="submit">Submit</button>
+    <?php
+    if (isset($invoice)) {
+        foreach ($invoice as $key => $value) { ?>
+            <p><?php echo "$key : $value" ?> </p>
+        <?php }
+    } ?>
+</form>
+</body>
+</html>

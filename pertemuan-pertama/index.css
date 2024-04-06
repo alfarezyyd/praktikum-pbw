@@ -1,0 +1,34 @@
+body {
+    width: 25%;
+    margin: 0 auto;
+    overflow-wrap: break-word;
+}
+
+.title {
+    text-align: center;
+}
+
+.list {
+    font-size: large;
+    margin-bottom: -10px;
+}
+
+ol {
+    margin-bottom: -10px;
+    display: inline-block;
+}
+
+.paragraph {
+    text-align: justify;
+    display: inline;
+}
+
+span {
+    font-size: 28px
+}
+
+.headIntroduction {
+    margin-bottom: 2px;
+}
+
+
