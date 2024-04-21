@@ -2,7 +2,7 @@
 global $koneksi;
 include "koneksi.php";
 $mysqli_result_krs = mysqli_query($koneksi, "SELECT mahasiswa_npm, matakuliah_kodemk FROM krs");
-$mysqli_result_mahasiswa = mysqli_query($koneksi, "SELECT npm FROM mahasiswa");
+$mysqli_result_mahasiswa = mysqli_query($koneksi, "SELECT npm as mahasiswa_npm FROM mahasiswa");
 $mysqli_result_matakuliah = mysqli_query($koneksi, "SELECT kodemk FROM matakuliah");
 ?>
 
@@ -67,7 +67,6 @@ $mysqli_result_matakuliah = mysqli_query($koneksi, "SELECT kodemk FROM matakulia
                             <?php foreach ($row as $key => $value) { ?>
                                 <option value="<?= $value ?>"><?= $value ?></option>
                             <?php } ?>
-                            <option></option>
                         <?php } ?>
                     </select>
                 </td>
@@ -80,7 +79,6 @@ $mysqli_result_matakuliah = mysqli_query($koneksi, "SELECT kodemk FROM matakulia
                             <?php foreach ($row as $key => $value) { ?>
                                 <option value="<?= $value ?>"><?= $value ?></option>
                             <?php } ?>
-                            <option></option>
                         <?php } ?>
                     </select>
                 </td>

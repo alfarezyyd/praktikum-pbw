@@ -30,6 +30,7 @@ $mysqli_result = mysqli_query($koneksi, "SELECT * FROM mahasiswa");
 <table class="tableMahasiswa">
   <thead>
   <tr>
+    <th>No</th>
     <th>NPM</th>
     <th>Nama</th>
     <th>Jurusan</th>
@@ -38,8 +39,10 @@ $mysqli_result = mysqli_query($koneksi, "SELECT * FROM mahasiswa");
   </tr>
   </thead>
   <tbody>
+  <?php $i = 1; ?>
   <?php while ($row = mysqli_fetch_assoc($mysqli_result)) { ?>
     <tr>
+      <td><?= $i ?></td>
       <td><?= $row['npm'] ?></td>
       <td><?= $row['nama'] ?></td>
       <td><?= $row['jurusan'] ?></td>
@@ -48,10 +51,11 @@ $mysqli_result = mysqli_query($koneksi, "SELECT * FROM mahasiswa");
         <button name="edit" value="<?= $row['id'] ?>" data-npm="<?= $row['npm'] ?>" data-nama="<?= $row['nama'] ?>"
                 data-jurusan="<?= $row['jurusan'] ?>" data-alamat="<?= $row['alamat'] ?>">Edit
         </button>
-        <button><a href=" delete-mahasiswa.php?npm=<?= $row['npm'] ?>">Delete</a></button>
+        <button><a href=" delete-mahasiswa.php?id=<?= $row['id'] ?>">Delete</a></button>
       </td>
     </tr>
-  <?php } ?>
+    <?php $i++;
+  } ?>
   </tbody>
 </table>
 <br>
@@ -103,12 +107,13 @@ $mysqli_result = mysqli_query($koneksi, "SELECT * FROM mahasiswa");
   document.querySelectorAll("button[name='edit']").forEach(function (button) {
     button.addEventListener("click", function (e) {
         let form = document.querySelector(".formMahasiswa");
+        let id = e.target.value;
         let npm = e.target.dataset.npm;
         let nama = e.target.dataset.nama;
         let jurusan = e.target.dataset.jurusan;
         let alamat = e.target.dataset.alamat;
 
-        // Set nilai input pada form dengan data yang diambil
+        document.forms['form']['id'].value = id;
         document.forms['form']['npm'].value = npm;
         document.forms['form']['nama'].value = nama;
         document.forms['form']['jurusan'].value = jurusan;
