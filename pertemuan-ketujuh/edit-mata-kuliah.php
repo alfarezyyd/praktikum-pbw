@@ -12,6 +12,6 @@ if (isset($_POST['submit'])) {
     } else {
         $message = urlencode("Data Gagal Diubah");
     }
-    header("Location: crud-mata-kuliah.phtml?message={$message}");
+    header("Location: crud-mata-kuliah.php?message={$message}");
 }
 

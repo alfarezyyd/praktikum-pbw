@@ -9,6 +9,6 @@ if (isset($_GET['kodemk'])) {
     } else {
         $message = urlencode("Data Gagal Dihapus");
     }
-    header("Location: crud-mata-kuliah.phtml?message={$message}");
+    header("Location: crud-mata-kuliah.php?message={$message}");
 }
 

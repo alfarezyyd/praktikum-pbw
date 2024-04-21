@@ -13,6 +13,6 @@ if (isset($_POST['submit'])) {
     } else {
         $message = urlencode("Data Gagal Ditambahkan");
     }
-    header("Location: crud-mahasiswa.phtml?message={$message}");
+    header("Location: crud-mahasiswa.php?message={$message}");
 }
 

@@ -9,6 +9,6 @@ if (isset($_GET['npm']) && $kodemk = $_GET['kodemk']) {
     } else {
         $message = urlencode("Data Gagal Dihapus");
     }
-    header("Location: crud-krs.phtml?message={$message}");
+    header("Location: crud-krs.php?message={$message}");
 }
 

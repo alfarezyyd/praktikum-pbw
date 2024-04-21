@@ -28,9 +28,9 @@ $count_row = 1;
 
 <h3>Link</h3>
 <ol>
-    <li><a href="crud-mahasiswa.phtml">CRUD Mahasiswa</a></li>
-    <li><a href="crud-mata-kuliah.phtml">CRUD Mata Kuliah</a></li>
-    <li><a href="crud-krs.phtml">CRUD KRS</a></li>
+    <li><a href="crud-mahasiswa.php ">CRUD Mahasiswa</a></li>
+    <li><a href="crud-mata-kuliah.php">CRUD Mata Kuliah</a></li>
+    <li><a href="crud-krs.php">CRUD KRS</a></li>
 </ol>
 
 <table class="tablePrimary">
