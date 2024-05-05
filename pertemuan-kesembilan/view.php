@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
     </h3>
 <?php } ?>
 <table>
-    <form action="index.phtml" method="post">
+    <form action="view.php" method="post">
         <tr>
             <td><label for="code_book">Code Book</label></td>
             <td><input type="text" name="code_book" id="code_book"></td>
